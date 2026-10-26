@@ -1,0 +1,1268 @@
+<!-- 
+====================================================================================================
+  وزارة البيئة والمياه والزراعة - بوابة التوظيف
+  مكون شيربوينت: قسم تسجيل الاهتمام بالعمل ونموذج قاعدة الكفاءات المستقبلية
+  تاريخ التحديث: 2026
+  طريقة الاستخدام في شيربوينت:
+  1. يُرفع هذا الملف إلى مكتبة الأنماط (Style Library) في مسار: /Style Library/MEWA/Career/mewa-career-part.html
+  2. في صفحة الفرص الوظيفية (CareerOpportunities/Pages/default.aspx)، يتم تحرير الصفحة وإضافة Content Editor Web Part
+  3. ربط الـ Web Part برابط الملف في الـ Content Link، أو لصق الكود مباشرة في Script Editor Web Part.
+====================================================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+    #mewa-career-app {
+        font-family: 'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        direction: rtl;
+        text-align: right;
+        color: #202e26;
+        --mewa-green: #0a6638;
+        --mewa-dark: #074a28;
+        --mewa-accent: #27ae60;
+        --mewa-light-bg: #f4fbf6;
+        --mewa-border: #dbe7df;
+        --shadow-sm: 0 2px 8px rgba(10, 102, 56, 0.06);
+        --shadow-md: 0 8px 24px rgba(10, 102, 56, 0.09);
+        --radius: 12px;
+    }
+
+    #mewa-career-app * {
+        box-sizing: border-box;
+    }
+
+    /* بنر سجّل اهتمامك بالعمل معنا */
+    .mewa-interest-banner {
+        background: linear-gradient(135deg, #095931 0%, #0c733f 60%, #158a4e 100%);
+        border-radius: var(--radius);
+        color: #ffffff;
+        padding: 36px 32px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 12px 32px rgba(10, 102, 56, 0.15);
+        margin: 25px 0;
+    }
+
+    .mewa-interest-banner::after {
+        content: '\f0c0';
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        position: absolute;
+        left: 30px;
+        bottom: -25px;
+        font-size: 140px;
+        color: rgba(255, 255, 255, 0.05);
+        pointer-events: none;
+    }
+
+    .mewa-banner-inner {
+        position: relative;
+        z-index: 2;
+        max-width: 820px;
+    }
+
+    .mewa-badge-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.18);
+        padding: 5px 14px;
+        border-radius: 99px;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .mewa-interest-banner h2 {
+        font-size: 26px;
+        font-weight: 700;
+        margin: 0 0 14px 0;
+        color: #ffffff !important;
+        line-height: 1.4;
+    }
+
+    .mewa-interest-banner p {
+        font-size: 15px;
+        line-height: 1.8;
+        opacity: 0.95;
+        margin: 0 0 22px 0;
+        color: #f1f8f3;
+    }
+
+    .mewa-btn-cta {
+        background: #ffffff;
+        color: var(--mewa-green) !important;
+        border: none;
+        border-radius: 8px;
+        padding: 13px 28px;
+        font-size: 15.5px;
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+        transition: all 0.2s ease;
+        text-decoration: none;
+    }
+
+    .mewa-btn-cta:hover {
+        background: #f4fdf7;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+        color: var(--mewa-dark) !important;
+    }
+
+    /* قسم كيف تتقدم المحدث */
+    .mewa-steps-box {
+        background: #ffffff;
+        border: 1px solid var(--mewa-border);
+        border-radius: var(--radius);
+        padding: 30px 26px;
+        margin: 25px 0;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .mewa-steps-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--mewa-green);
+        margin: 0 0 20px 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .mewa-steps-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .mewa-step-item {
+        background: #fafcfb;
+        border: 1px solid #e1ebe4;
+        border-radius: 10px;
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 0.2s ease;
+    }
+
+    .mewa-step-item:hover {
+        border-color: var(--mewa-green);
+        background: #ffffff;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .mewa-step-item.is-first {
+        border: 2px solid var(--mewa-green);
+        background: #f7fdf9;
+    }
+
+    .mewa-step-number {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--mewa-green);
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 14px;
+    }
+
+    .mewa-step-item.is-first .mewa-step-number {
+        background: linear-gradient(135deg, var(--mewa-green), var(--mewa-accent));
+    }
+
+    .mewa-step-item h3 {
+        font-size: 17px;
+        font-weight: 700;
+        color: #1a251e;
+        margin: 0 0 8px 0;
+    }
+
+    .mewa-step-item p {
+        font-size: 13.5px;
+        color: #55665c;
+        line-height: 1.6;
+        margin: 0 0 16px 0;
+    }
+
+    .mewa-step-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13.5px;
+        font-weight: 600;
+        color: var(--mewa-green);
+        text-decoration: none;
+        padding: 7px 12px;
+        border-radius: 6px;
+        background: rgba(10, 102, 56, 0.08);
+        border: none;
+        cursor: pointer;
+        align-self: flex-start;
+        transition: all 0.2s ease;
+    }
+
+    .mewa-step-link:hover {
+        background: var(--mewa-green);
+        color: #ffffff !important;
+    }
+
+    /* تنبيه جدارات */
+    .mewa-notice-alert {
+        background: #fff8e6;
+        border: 1px solid #fedc9d;
+        border-right: 5px solid #d97706;
+        border-radius: 8px;
+        padding: 14px 18px;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 13.5px;
+        color: #78350f;
+        line-height: 1.6;
+        margin-top: 22px;
+    }
+
+    /* النافذة المنبثقة للنموذج */
+    .mewa-modal-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(8, 26, 17, 0.65);
+        backdrop-filter: blur(4px);
+        z-index: 99999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .mewa-modal-bg.show {
+        display: flex;
+    }
+
+    .mewa-modal-panel {
+        background: #ffffff;
+        border-radius: var(--radius);
+        width: 100%;
+        max-width: 860px;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
+        animation: mewaFade 0.25s ease-out;
+    }
+
+    @keyframes mewaFade {
+        from { opacity: 0; transform: scale(0.97); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    .mewa-modal-header {
+        padding: 20px 26px;
+        border-bottom: 1px solid var(--mewa-border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #fafdfb;
+        border-radius: var(--radius) var(--radius) 0 0;
+    }
+
+    .mewa-modal-header h2 {
+        font-size: 19px;
+        font-weight: 700;
+        color: var(--mewa-green);
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .mewa-modal-close {
+        background: #edf4ef;
+        border: none;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 15px;
+        color: #4a5d52;
+        transition: all 0.2s ease;
+    }
+
+    .mewa-modal-close:hover {
+        background: #ff4d4f;
+        color: #fff;
+    }
+
+    .mewa-modal-body {
+        padding: 24px 26px;
+        overflow-y: auto;
+        flex-grow: 1;
+    }
+
+    /* تعليمات النموذج */
+    .mewa-info-card {
+        background: #f0f7f3;
+        border: 1px solid #cfe2d6;
+        border-radius: 8px;
+        padding: 14px 18px;
+        margin-bottom: 22px;
+    }
+
+    .mewa-info-card-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--mewa-green);
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .mewa-info-card ul {
+        margin: 0;
+        padding-right: 18px;
+        font-size: 13.5px;
+        color: #2b3b32;
+        line-height: 1.6;
+    }
+
+    .mewa-info-card li {
+        margin-bottom: 4px;
+    }
+
+    .mewa-req {
+        color: #e53e3e;
+        font-weight: bold;
+    }
+
+    /* أقسام الحقول */
+    .mewa-field-group {
+        border: 1px solid #e2ebe5;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 22px;
+    }
+
+    .mewa-group-legend {
+        font-size: 15.5px;
+        font-weight: 700;
+        color: var(--mewa-dark);
+        margin-bottom: 16px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #edf4ef;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .mewa-row-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    .mewa-row-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 14px;
+    }
+
+    .mewa-ctrl-field {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 12px;
+    }
+
+    .mewa-ctrl-field label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #2b3b32;
+    }
+
+    .mewa-input, .mewa-select {
+        border: 1px solid #c9d8ce;
+        border-radius: 6px;
+        padding: 9px 12px;
+        font-size: 13.5px;
+        font-family: inherit;
+        background: #fbfdfc;
+        width: 100%;
+        color: #1a251e;
+        outline: none;
+        transition: border 0.2s ease;
+    }
+
+    .mewa-input:focus, .mewa-select:focus {
+        border-color: var(--mewa-green);
+        background: #ffffff;
+        box-shadow: 0 0 0 3px rgba(10, 102, 56, 0.1);
+    }
+
+    .mewa-ctrl-field.error .mewa-input,
+    .mewa-ctrl-field.error .mewa-select {
+        border-color: #d32f2f;
+        background: #fff8f8;
+    }
+
+    .mewa-err-msg {
+        font-size: 11.5px;
+        color: #d32f2f;
+        display: none;
+    }
+
+    .mewa-ctrl-field.error .mewa-err-msg {
+        display: block;
+    }
+
+    /* صناديق الرفع */
+    .mewa-upload-zone {
+        border: 2px dashed #b8cebf;
+        border-radius: 8px;
+        padding: 14px;
+        text-align: center;
+        background: #fafdfb;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .mewa-upload-zone:hover {
+        border-color: var(--mewa-green);
+        background: #f2f9f4;
+    }
+
+    .mewa-upload-zone input[type="file"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .mewa-zone-icon {
+        font-size: 22px;
+        color: var(--mewa-green);
+        margin-bottom: 4px;
+    }
+
+    .mewa-zone-txt {
+        font-size: 13px;
+        font-weight: 600;
+        color: #202e26;
+    }
+
+    .mewa-zone-hint {
+        font-size: 11.5px;
+        color: #63756b;
+        margin-top: 2px;
+    }
+
+    .mewa-file-selected {
+        font-size: 12px;
+        color: var(--mewa-green);
+        font-weight: 600;
+        margin-top: 6px;
+        display: none;
+    }
+
+    /* الإقرار */
+    .mewa-agreement {
+        background: #f7faf8;
+        border: 1px solid #d4e5d9;
+        border-radius: 8px;
+        padding: 14px;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        margin-top: 10px;
+    }
+
+    .mewa-agreement input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--mewa-green);
+        margin-top: 2px;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    .mewa-agreement label {
+        font-size: 13px;
+        color: #202e26;
+        line-height: 1.6;
+        cursor: pointer;
+    }
+
+    /* تذييل النموذج */
+    .mewa-modal-footer {
+        padding: 16px 26px;
+        border-top: 1px solid var(--mewa-border);
+        background: #fafdfb;
+        border-radius: 0 0 var(--radius) var(--radius);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mewa-btn-submit {
+        background: linear-gradient(135deg, var(--mewa-green), var(--mewa-accent));
+        color: #ffffff;
+        border: none;
+        border-radius: 6px;
+        padding: 11px 30px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 3px 10px rgba(10, 102, 56, 0.2);
+    }
+
+    .mewa-btn-submit:hover {
+        box-shadow: 0 5px 14px rgba(10, 102, 56, 0.3);
+    }
+
+    .mewa-btn-cancel {
+        background: transparent;
+        color: #55665c;
+        border: 1px solid #ccd8d0;
+        border-radius: 6px;
+        padding: 10px 20px;
+        font-size: 13.5px;
+        cursor: pointer;
+    }
+
+    /* نافذة النجاح */
+    .mewa-success-box {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(8, 26, 17, 0.7);
+        backdrop-filter: blur(4px);
+        z-index: 100000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .mewa-success-box.show {
+        display: flex;
+    }
+
+    .mewa-success-card {
+        background: #ffffff;
+        border-radius: var(--radius);
+        max-width: 540px;
+        padding: 36px 28px;
+        text-align: center;
+        box-shadow: 0 16px 48px rgba(0,0,0,0.25);
+    }
+
+    .mewa-success-icon {
+        width: 64px;
+        height: 64px;
+        background: #e6f7ec;
+        color: var(--mewa-accent);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        margin: 0 auto 18px;
+    }
+
+    .mewa-success-card h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--mewa-green);
+        margin: 0 0 12px 0;
+    }
+
+    .mewa-success-card p {
+        font-size: 14.5px;
+        color: #202e26;
+        line-height: 1.8;
+        margin: 0 0 24px 0;
+    }
+
+    .mewa-btn-ok {
+        background: var(--mewa-green);
+        color: #ffffff;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 32px;
+        font-size: 14.5px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+        .mewa-steps-grid, .mewa-row-2, .mewa-row-3 {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div id="mewa-career-app">
+
+    <!-- 1. بنر سجّل اهتمامك بالعمل معنا -->
+    <div class="mewa-interest-banner">
+        <div class="mewa-banner-inner">
+            <div class="mewa-badge-pill">
+                <i class="fa-solid fa-sparkles"></i> قاعدة الكفاءات المستقبلية
+            </div>
+            <h2>سجّل اهتمامك بالعمل معنا</h2>
+            <p>
+                يسعدنا اهتمامك بالانضمام إلى وزارة البيئة والمياه والزراعة. يمكنك تسجيل بياناتك المهنية وإرفاق سيرتك الذاتية لدخولك ضمن قاعدة الكفاءات المستقبلية للفرص المتوافقة مع مؤهلاتك.
+                <br>
+                <strong>علما بأن هذا التسجيل لا يعد تقديما على وظيفة معلنة أو ضمانا للترشيح، كما أن التقديم على الوظائف المعلنة يتم عبر منصة جدارات.</strong>
+            </p>
+            <button type="button" class="mewa-btn-cta" onclick="mewaOpenModal()">
+                <i class="fa-solid fa-file-circle-plus"></i> أضف بياناتك وسيرتك الذاتية
+            </button>
+        </div>
+    </div>
+
+    <!-- 2. قسم كيف تتقدم المحدث (الترتيب: 1: قدم طلبك, 2: سجل في جدارات, 3: استعرض الفرص) -->
+    <div class="mewa-steps-box">
+        <div class="mewa-steps-title">
+            <i class="fa-solid fa-route"></i> كيف تتقدّم؟
+        </div>
+
+        <div class="mewa-steps-grid">
+            <!-- الخطوة 1: قدم طلبك -->
+            <div class="mewa-step-item is-first">
+                <div>
+                    <div class="mewa-step-number">1</div>
+                    <h3>قدم طلبك <span style="font-size:11px; background:#e0f2e9; color:#0a6638; padding:2px 6px; border-radius:4px;">الخيار الأول</span></h3>
+                    <p>اكمل بيانات طلبك وقدم اهتمامك على الوظائف المناسبة لمؤهلاتك</p>
+                </div>
+                <button type="button" class="mewa-step-link" onclick="mewaOpenModal()">
+                    <span>تعبئة النموذج</span>
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+            </div>
+
+            <!-- الخطوة 2: سجل في جدارات -->
+            <div class="mewa-step-item">
+                <div>
+                    <div class="mewa-step-number">2</div>
+                    <h3>سجل في جدارات</h3>
+                    <p>أنشئ حسابك أو حدث بياناتك في المنصة الوطنية الموحدة للتوظيف (جدارات).</p>
+                </div>
+                <a href="https://jadarat.sa" target="_blank" rel="noopener noreferrer" class="mewa-step-link">
+                    <span>منصة جدارات</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <!-- الخطوة 3: استعرض الفرص -->
+            <div class="mewa-step-item">
+                <div>
+                    <div class="mewa-step-number">3</div>
+                    <h3>استعرض الفرص</h3>
+                    <p>تصفح الوظائف المعلنة باسم وزارة البيئة والمياه والزراعة وقدم عليها مباشرة عبر المنصة.</p>
+                </div>
+                <a href="https://jadarat.sa" target="_blank" rel="noopener noreferrer" class="mewa-step-link">
+                    <span>استعراض الوظائف</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- التنبيه المهم -->
+        <div class="mewa-notice-alert">
+            <i class="fa-solid fa-triangle-exclamation" style="font-size:18px; color:#d97706; margin-top:2px;"></i>
+            <div>
+                <strong>تنبيه مهم:</strong> تعلن الوزارة عن وظائفها حصراً عبر منصة جدارات، ولا تطلب أي رسوم للتوظيف، يُرجى الحذر من الإعلانات أو الجهات غير الرسمية.
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. نافذة النموذج المنبثقة -->
+    <div class="mewa-modal-bg" id="mewaModalBg" onclick="mewaOnBgClick(event)">
+        <div class="mewa-modal-panel">
+            <div class="mewa-modal-header">
+                <h2>
+                    <img src="/Style Library/MEWA/Career/mewa-logo.png" onerror="this.src='mewa-logo.png'; this.onerror=null;" style="height: 38px; vertical-align: middle; margin-left: 10px; display: inline-block;" alt="وزارة البيئة والمياه والزراعة">
+                    نموذج تسجيل الاهتمام بالعمل لدى الوزارة
+                </h2>
+                <button type="button" class="mewa-modal-close" onclick="mewaCloseModal()">✕</button>
+            </div>
+
+            <div class="mewa-modal-body">
+                <!-- التعليمات -->
+                <div class="mewa-info-card">
+                    <div class="mewa-info-card-title">
+                        <i class="fa-solid fa-circle-info"></i> تعليمات وتوجيهات تعبئة النموذج:
+                    </div>
+                    <ul>
+                        <li>يرجى تعبئة البيانات بدقة والتأكد من صحة معلومات التواصل.</li>
+                        <li>الحقول المميزة بعلامة (<span class="mewa-req">*</span>) إلزامية.</li>
+                        <li>تُرفق السيرة الذاتية بصيغة PDF، وتُوضح صيغ المرفقات الأخرى وأحجامها المسموح بها بجوار حقول الرفع.</li>
+                        <li>تُستخدم البيانات لأغراض الاستقطاب والتواصل وفق إشعار الخصوصية الخاص بالنموذج.</li>
+                    </ul>
+                </div>
+
+                <form id="mewaForm" onsubmit="mewaSubmitForm(event)">
+                    
+                    <!-- البيانات الأساسية والتواصل -->
+                    <div class="mewa-field-group">
+                        <div class="mewa-group-legend"><i class="fa-solid fa-id-card"></i> البيانات الأساسية والتواصل</div>
+                        <div class="mewa-row-2">
+                            <div class="mewa-ctrl-field" id="wrap_name">
+                                <label>الاسم الثلاثي باللغة العربية <span class="mewa-req">*</span></label>
+                                <input type="text" id="mewa_name" class="mewa-input" placeholder="الاسم الثلاثي كاملاً" required>
+                                <span class="mewa-err-msg">يرجى إدخال الاسم الثلاثي باللغة العربية</span>
+                            </div>
+
+                            <div class="mewa-ctrl-field" id="wrap_nid">
+                                <label>رقم الهوية الوطنية / الإقامة <span class="mewa-req">*</span></label>
+                                <input type="text" id="mewa_nid" class="mewa-input" maxlength="10" placeholder="10 أرقام (مثال: 1xxxxxxxxx)" required>
+                                <span class="mewa-err-msg">يرجى إدخال رقم هوية صحيح (10 أرقام)</span>
+                            </div>
+
+                            <div class="mewa-ctrl-field" id="wrap_nationality">
+                                <label>الجنسية <span class="mewa-req">*</span></label>
+                                <select id="mewa_nationality" class="mewa-select" required>
+                                    <option value="" disabled selected>اختر الجنسية</option>
+                                    <option value="سعودي">سعودي</option>
+                                    <option value="غير سعودي">غير سعودي</option>
+                                </select>
+                                <span class="mewa-err-msg">يرجى تحديد الجنسية</span>
+                            </div>
+
+                            <div class="mewa-ctrl-field" id="wrap_email">
+                                <label>البريد الإلكتروني <span class="mewa-req">*</span></label>
+                                <input type="email" id="mewa_email" class="mewa-input" dir="ltr" placeholder="example@domain.com" required>
+                                <span class="mewa-err-msg">يرجى إدخال بريد إلكتروني صالح</span>
+                            </div>
+
+                            <div class="mewa-ctrl-field" id="wrap_phone">
+                                <label>رقم الجوال <span class="mewa-req">*</span></label>
+                                <input type="tel" id="mewa_phone" class="mewa-input" dir="ltr" maxlength="10" placeholder="05xxxxxxxx" required>
+                                <span class="mewa-err-msg">يرجى إدخال رقم جوال يبدأ بـ 05 ويتكون من 10 أرقام</span>
+                            </div>
+
+                            <div class="mewa-ctrl-field" id="wrap_region">
+                                <label>العنوان: المنطقة <span class="mewa-req">*</span></label>
+                                <select id="mewa_region" class="mewa-select" onchange="mewaLoadCities()" required>
+                                    <option value="" disabled selected>اختر المنطقة</option>
+                                    <option value="منطقة الرياض">منطقة الرياض</option>
+                                    <option value="منطقة مكة المكرمة">منطقة مكة المكرمة</option>
+                                    <option value="المنطقة الشرقية">المنطقة الشرقية</option>
+                                    <option value="منطقة المدينة المنورة">منطقة المدينة المنورة</option>
+                                    <option value="منطقة القصيم">منطقة القصيم</option>
+                                    <option value="منطقة عسير">منطقة عسير</option>
+                                    <option value="منطقة تبوك">منطقة تبوك</option>
+                                    <option value="منطقة حائل">منطقة حائل</option>
+                                    <option value="منطقة الحدود الشمالية">منطقة الحدود الشمالية</option>
+                                    <option value="منطقة جازان">منطقة جازان</option>
+                                    <option value="منطقة نجران">منطقة نجران</option>
+                                    <option value="منطقة الباحة">منطقة الباحة</option>
+                                    <option value="منطقة الجوف">منطقة الجوف</option>
+                                </select>
+                                <span class="mewa-err-msg">يرجى اختيار المنطقة</span>
+                            </div>
+
+                            <div class="mewa-ctrl-field" id="wrap_city">
+                                <label>العنوان: المدينة <span class="mewa-req">*</span></label>
+                                <select id="mewa_city" class="mewa-select" required disabled>
+                                    <option value="" disabled selected>اختر المنطقة أولاً</option>
+                                </select>
+                                <span class="mewa-err-msg">يرجى اختيار المدينة</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- المؤهلات العلمية -->
+                    <div class="mewa-field-group">
+                        <div class="mewa-group-legend"><i class="fa-solid fa-graduation-cap"></i> المؤهلات العلمية</div>
+                        <div class="mewa-row-2">
+                            <div class="mewa-ctrl-field" id="wrap_degree">
+                                <label>الدرجة العلمية <span class="mewa-req">*</span></label>
+                                <select id="mewa_degree" class="mewa-select" required>
+                                    <option value="" disabled selected>اختر الدرجة العلمية</option>
+                                    <option value="ثانوي فما دون">ثانوي فما دون</option>
+                                    <option value="دبلوم">دبلوم</option>
+                                    <option value="بكالوريوس">بكالوريوس</option>
+                                    <option value="ماجستير">ماجستير</option>
+                                    <option value="دكتوراه">دكتوراه</option>
+                                </select>
+                                <span class="mewa-err-msg">يرجى تحديد الدرجة العلمية</span>
+                            </div>
+
+                            <div class="mewa-ctrl-field" id="wrap_major">
+                                <label>التخصص <span class="mewa-req">*</span></label>
+                                <input type="text" id="mewa_major" class="mewa-input" placeholder="مثال: هندسة زراعية، علوم بيئة، تقنية معلومات" required>
+                                <span class="mewa-err-msg">يرجى إدخال التخصص</span>
+                            </div>
+
+                            <div class="mewa-ctrl-field" id="wrap_univ">
+                                <label>اسم الجامعة <span class="mewa-req">*</span></label>
+                                <input type="text" id="mewa_univ" class="mewa-input" placeholder="اسم الجامعة أو المؤسسة التعليمية" required>
+                                <span class="mewa-err-msg">يرجى إدخال اسم الجامعة</span>
+                            </div>
+
+                            <div class="mewa-ctrl-field" id="wrap_grad_year">
+                                <label>سنة التخرج <span class="mewa-req">*</span></label>
+                                <select id="mewa_grad_year" class="mewa-select" required>
+                                    <option value="" disabled selected>اختر سنة التخرج</option>
+                                </select>
+                                <span class="mewa-err-msg">يرجى تحديد سنة التخرج</span>
+                            </div>
+
+                            <div class="mewa-ctrl-field" id="wrap_gpa_scale">
+                                <label>مقياس المعدل <span class="mewa-req">*</span></label>
+                                <select id="mewa_gpa_scale" class="mewa-select" required>
+                                    <option value="" disabled selected>اختر مقياس المعدل</option>
+                                    <option value="من 4">من 4</option>
+                                    <option value="من 5">من 5</option>
+                                    <option value="من 100">من 100</option>
+                                </select>
+                                <span class="mewa-err-msg">يرجى تحديد مقياس المعدل</span>
+                            </div>
+
+                            <div class="mewa-ctrl-field" id="wrap_gpa">
+                                <label>المعدل التراكمي <span class="mewa-req">*</span></label>
+                                <input type="number" step="0.01" min="0" id="mewa_gpa" class="mewa-input" placeholder="المعدل التراكمي" required>
+                                <span class="mewa-err-msg">يرجى إدخال المعدل التراكمي بشكل صحيح</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- الخبرات والبيانات المهنية -->
+                    <div class="mewa-field-group">
+                        <div class="mewa-group-legend"><i class="fa-solid fa-briefcase"></i> الخبرات والبيانات المهنية</div>
+                        <div class="mewa-row-2">
+                            <div class="mewa-ctrl-field" id="wrap_exp">
+                                <label>سنوات الخبرة <span class="mewa-req">*</span></label>
+                                <select id="mewa_exp" class="mewa-select" required>
+                                    <option value="" disabled selected>اختر سنوات الخبرة</option>
+                                    <option value="دون خبرة">دون خبرة (حديث تخرج)</option>
+                                    <option value="أقل من سنة">أقل من سنة</option>
+                                    <option value="1 - 2 سنة">1 - 2 سنة</option>
+                                    <option value="3 - 5 سنوات">3 - 5 سنوات</option>
+                                    <option value="6 - 10 سنوات">6 - 10 سنوات</option>
+                                    <option value="أكثر من 10 سنوات">أكثر من 10 سنوات</option>
+                                </select>
+                                <span class="mewa-err-msg">يرجى اختيار سنوات الخبرة</span>
+                            </div>
+
+                            <div class="mewa-ctrl-field" id="wrap_emp_status">
+                                <label>الحالة الوظيفية الحالية <span class="mewa-req">*</span></label>
+                                <select id="mewa_emp_status" class="mewa-select" onchange="mewaToggleJobFields()" required>
+                                    <option value="" disabled selected>اختر الحالة الوظيفية</option>
+                                    <option value="على رأس العمل">على رأس العمل</option>
+                                    <option value="باحث عن عمل">باحث عن عمل</option>
+                                </select>
+                                <span class="mewa-err-msg">يرجى اختيار الحالة الوظيفية</span>
+                            </div>
+
+                            <div class="mewa-ctrl-field" id="wrap_job_title" style="display: none;">
+                                <label>المسمى الوظيفي الحالي <span class="mewa-req">*</span></label>
+                                <input type="text" id="mewa_job_title" class="mewa-input" placeholder="المسمى الوظيفي">
+                                <span class="mewa-err-msg">يرجى إدخال المسمى الوظيفي</span>
+                            </div>
+
+                            <div class="mewa-ctrl-field" id="wrap_job_employer" style="display: none;">
+                                <label>جهة العمل الحالية <span class="mewa-req">*</span></label>
+                                <input type="text" id="mewa_job_employer" class="mewa-input" placeholder="اسم جهة العمل">
+                                <span class="mewa-err-msg">يرجى إدخال جهة العمل</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- اللغة والمرفقات -->
+                    <div class="mewa-field-group">
+                        <div class="mewa-group-legend"><i class="fa-solid fa-paperclip"></i> اللغة والمرفقات</div>
+                        
+                        <div class="mewa-ctrl-field" id="wrap_eng_lvl" style="margin-bottom: 18px;">
+                            <label>مستوى اللغة الإنجليزية <span class="mewa-req">*</span></label>
+                            <select id="mewa_eng_lvl" class="mewa-select" required>
+                                <option value="" disabled selected>اختر مستوى اللغة الإنجليزية</option>
+                                <option value="مبتدئ">مبتدئ</option>
+                                <option value="متوسط">متوسط</option>
+                                <option value="متقدم">متقدم</option>
+                            </select>
+                            <span class="mewa-err-msg">يرجى اختيار مستوى اللغة الإنجليزية</span>
+                        </div>
+
+                        <div class="mewa-row-3">
+                            <!-- السيرة الذاتية PDF -->
+                            <div class="mewa-ctrl-field" id="wrap_file_cv">
+                                <label>السيرة الذاتية <span class="mewa-req">*</span></label>
+                                <div class="mewa-upload-zone" id="zone_cv">
+                                    <input type="file" id="mewa_cv" accept=".pdf,application/pdf" onchange="mewaFileSelected(this, 'zone_cv', 'lbl_cv', 10, ['pdf'])" required>
+                                    <div class="mewa-zone-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                                    <div class="mewa-zone-txt">رفع السيرة الذاتية</div>
+                                    <div class="mewa-zone-hint">صيغة PDF فقط (حتى 10MB)</div>
+                                    <div class="mewa-file-selected" id="lbl_cv"></div>
+                                </div>
+                                <span class="mewa-err-msg">يرجى إرفاق السيرة الذاتية بصيغة PDF</span>
+                            </div>
+
+                            <!-- شهادة اللغة اختياري -->
+                            <div class="mewa-ctrl-field">
+                                <label>شهادة اللغة الإنجليزية <span style="font-size:11px; color:#6a7c72;">(اختياري)</span></label>
+                                <div class="mewa-upload-zone" id="zone_eng">
+                                    <input type="file" id="mewa_eng_file" accept=".pdf,.jpg,.jpeg,.png" onchange="mewaFileSelected(this, 'zone_eng', 'lbl_eng', 5, ['pdf','jpg','jpeg','png'])">
+                                    <div class="mewa-zone-icon"><i class="fa-solid fa-certificate"></i></div>
+                                    <div class="mewa-zone-txt">شهادة اختبار اللغة</div>
+                                    <div class="mewa-zone-hint">PDF, JPG, PNG (حتى 5MB)</div>
+                                    <div class="mewa-file-selected" id="lbl_eng"></div>
+                                </div>
+                            </div>
+
+                            <!-- وثائق أخرى اختياري -->
+                            <div class="mewa-ctrl-field">
+                                <label>مستندات أو وثائق أخرى <span style="font-size:11px; color:#6a7c72;">(اختياري)</span></label>
+                                <div class="mewa-upload-zone" id="zone_other">
+                                    <input type="file" id="mewa_other_file" accept=".pdf,.jpg,.jpeg,.png" onchange="mewaFileSelected(this, 'zone_other', 'lbl_other', 10, ['pdf','jpg','jpeg','png'])">
+                                    <div class="mewa-zone-icon"><i class="fa-solid fa-folder-open"></i></div>
+                                    <div class="mewa-zone-txt">مستندات إضافية</div>
+                                    <div class="mewa-zone-hint">PDF, JPG, PNG (حتى 10MB)</div>
+                                    <div class="mewa-file-selected" id="lbl_other"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- نقطة المصادقة والتأكيد (صندوق ✓ للموافقة الزامي) -->
+                    <div class="mewa-agreement" id="wrap_agree">
+                        <input type="checkbox" id="mewa_agree" required>
+                        <label for="mewa_agree">
+                            <span class="mewa-req">*</span>
+                            <strong>أقر بصحة كافة البيانات والمستندات المدخلة</strong>، كما أوافق على حفظ ومعالجة البيانات لأغراض الاستقطاب المستقبلي لدى الوزارة ولا يعد التسجيل تقديما على وظيفة معلنة او ضمانا للترشيح او التوظيف.
+                        </label>
+                    </div>
+                    <span class="mewa-err-msg" id="msg_agree" style="margin-top:6px;">يرجى الموافقة على الإقرار للمتابعة</span>
+
+                </form>
+            </div>
+
+            <div class="mewa-modal-footer">
+                <button type="submit" form="mewaForm" class="mewa-btn-submit" id="mewaSubmitBtn">
+                    <i class="fa-solid fa-paper-plane"></i> إرسال البيانات
+                </button>
+                <button type="button" class="mewa-btn-cancel" onclick="mewaCloseModal()">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. نافذة التأكيد والنجاح -->
+    <div class="mewa-success-box" id="mewaSuccessBox">
+        <div class="mewa-success-card">
+            <div class="mewa-success-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <h3>تم استلام طلبك بنجاح</h3>
+            <p>
+                تم استلام بياناتك بنجاح، نشكر اهتمامك بالانضمام إلى وزارة البيئة والمياه والزراعة، وسيتم حفظ بياناتك المهنية ضمن قاعدة الكفاءات المستقبلية، مع تمنياتنا لك بالتوفيق
+            </p>
+            <button type="button" class="mewa-btn-ok" onclick="mewaCloseSuccess()">حسناً</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+(function() {
+    const saudiRegionsCities = {
+        "منطقة الرياض": ["الرياض", "الخرج", "الدرعية", "المجمعة", "الدوادمي", "وادي الدواسر", "الزلفي", "شقراء", "حوطة بني تميم", "عفيف", "الغاط", "ثادق", "حريملاء", "رماح"],
+        "منطقة مكة المكرمة": ["مكة المكرمة", "جدة", "الطائف", "القنفذة", "رابغ", "الليث", "خليص", "الجموم", "تربة", "الكامل", "رنية", "أضم"],
+        "المنطقة الشرقية": ["الدمام", "الخبر", "الظهران", "الأحساء", "الجبيل", "القطيف", "حفر الباطن", "الخفجي", "رأس تنورة", "بقيق", "النعيرية", "قرية العليا"],
+        "منطقة المدينة المنورة": ["المدينة المنورة", "ينبع", "العلا", "مهد الذهب", "بدر", "الحناكية", "خيبر", "العيص", "وادي الفرع"],
+        "منطقة القصيم": ["بريدة", "عنيزة", "الرس", "المذنب", "البكيرية", "البدائع", "الأسياح", "النبهانية", "الشماسية", "عيون الجواء", "رياض الخبراء"],
+        "منطقة عسير": ["أبها", "خميس مشيط", "بيشة", "محايل عسير", "النماص", "بارق", "رجال ألمع", "سراة عبيدة", "تثليث", "ظهران الجنوب", "بلقرن", "أحد رفيدة", "المجاردة"],
+        "منطقة تبوك": ["تبوك", "ضباء", "الوجه", "أملج", "حقل", "تيماء", "البدع"],
+        "منطقة حائل": ["حائل", "بقعاء", "الغزالة", "الشنان", "موقق", "الشملي", "السليمي", "الحائط"],
+        "منطقة الحدود الشمالية": ["عرعر", "رفحاء", "طريف", "العويقيلة"],
+        "منطقة جازان": ["جازان", "صبيا", "أبو عريش", "صامطة", "بيش", "الدرب", "ضمد", "الدائر", "العارضة", "أحد المسارحة", "العيدابي", "فيفاء", "فرسان"],
+        "منطقة نجران": ["نجران", "شرورة", "حبونا", "بدر الجنوب", "يدمة", "ثار", "خباش"],
+        "منطقة الباحة": ["الباحة", "بلجرشي", "المندق", "المخواة", "قلوة", "العقيق", "القرى", "غامد الزناد", "الحجرة"],
+        "منطقة الجوف": ["سكاكا", "القريات", "دومة الجندل", "طبرجل"]
+    };
+
+    // تعبئة سنوات التخرج
+    const gradSelect = document.getElementById('mewa_grad_year');
+    if (gradSelect) {
+        const curYear = new Date().getFullYear();
+        for (let y = curYear; y >= 1980; y--) {
+            const opt = document.createElement('option');
+            opt.value = y;
+            opt.textContent = y;
+            gradSelect.appendChild(opt);
+        }
+    }
+
+    // دوال التحكم بالواجهة
+    window.mewaOpenModal = function() {
+        document.getElementById('mewaModalBg').classList.add('show');
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.mewaCloseModal = function() {
+        document.getElementById('mewaModalBg').classList.remove('show');
+        document.body.style.overflow = '';
+    };
+
+    window.mewaOnBgClick = function(e) {
+        if (e.target.id === 'mewaModalBg') mewaCloseModal();
+    };
+
+    window.mewaCloseSuccess = function() {
+        document.getElementById('mewaSuccessBox').classList.remove('show');
+        document.body.style.overflow = '';
+    };
+
+    window.mewaLoadCities = function() {
+        const reg = document.getElementById('mewa_region').value;
+        const citySel = document.getElementById('mewa_city');
+        citySel.innerHTML = '<option value="" disabled selected>اختر المدينة</option>';
+        if (saudiRegionsCities[reg]) {
+            citySel.disabled = false;
+            saudiRegionsCities[reg].forEach(function(c) {
+                const opt = document.createElement('option');
+                opt.value = c;
+                opt.textContent = c;
+                citySel.appendChild(opt);
+            });
+        } else {
+            citySel.disabled = true;
+        }
+    };
+
+    window.mewaToggleJobFields = function() {
+        const status = document.getElementById('mewa_emp_status').value;
+        const isWorking = (status === 'على رأس العمل');
+        document.getElementById('wrap_job_title').style.display = isWorking ? 'flex' : 'none';
+        document.getElementById('wrap_job_employer').style.display = isWorking ? 'flex' : 'none';
+        document.getElementById('mewa_job_title').required = isWorking;
+        document.getElementById('mewa_job_employer').required = isWorking;
+        if (!isWorking) {
+            document.getElementById('mewa_job_title').value = '';
+            document.getElementById('mewa_job_employer').value = '';
+        }
+    };
+
+    window.mewaFileSelected = function(input, zoneId, lblId, maxMB, exts) {
+        const zone = document.getElementById(zoneId);
+        const lbl = document.getElementById(lblId);
+        if (input.files && input.files[0]) {
+            const file = input.files[0];
+            const ext = file.name.split('.').pop().toLowerCase();
+            const sz = file.size / (1024 * 1024);
+            if (!exts.includes(ext)) {
+                alert('صيغة الملف غير مسموح بها. الصيغ المسموحة: ' + exts.join(', '));
+                input.value = '';
+                lbl.style.display = 'none';
+                return;
+            }
+            if (sz > maxMB) {
+                alert('حجم الملف يتجاوز ' + maxMB + ' ميجابايت.');
+                input.value = '';
+                lbl.style.display = 'none';
+                return;
+            }
+            zone.style.borderColor = '#0a6638';
+            zone.style.background = '#eef8f2';
+            lbl.style.display = 'block';
+            lbl.textContent = '✓ ' + file.name;
+        } else {
+            zone.style.borderColor = '#b8cebf';
+            zone.style.background = '#fafdfb';
+            lbl.style.display = 'none';
+        }
+    };
+
+    function markError(id, isInvalid) {
+        const el = document.getElementById(id);
+        if (el) {
+            if (isInvalid) el.classList.add('error');
+            else el.classList.remove('error');
+        }
+        return !isInvalid;
+    }
+
+    // إرسال البيانات وحفظها
+    window.mewaSubmitForm = async function(e) {
+        e.preventDefault();
+        let valid = true;
+
+        const name = document.getElementById('mewa_name').value.trim();
+        const nid = document.getElementById('mewa_nid').value.trim();
+        const nat = document.getElementById('mewa_nationality').value;
+        const email = document.getElementById('mewa_email').value.trim();
+        const phone = document.getElementById('mewa_phone').value.trim();
+        const reg = document.getElementById('mewa_region').value;
+        const city = document.getElementById('mewa_city').value;
+        const degree = document.getElementById('mewa_degree').value;
+        const major = document.getElementById('mewa_major').value.trim();
+        const univ = document.getElementById('mewa_univ').value.trim();
+        const gradYear = document.getElementById('mewa_grad_year').value;
+        const gpaScale = document.getElementById('mewa_gpa_scale').value;
+        const gpa = parseFloat(document.getElementById('mewa_gpa').value);
+        const exp = document.getElementById('mewa_exp').value;
+        const status = document.getElementById('mewa_emp_status').value;
+        const engLvl = document.getElementById('mewa_eng_lvl').value;
+        const cvFile = document.getElementById('mewa_cv').files[0];
+        const agree = document.getElementById('mewa_agree').checked;
+
+        if (!markError('wrap_name', name.length < 5)) valid = false;
+        if (!markError('wrap_nid', !/^[12]\d{9}$/.test(nid))) valid = false;
+        if (!markError('wrap_nationality', !nat)) valid = false;
+        if (!markError('wrap_email', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))) valid = false;
+        if (!markError('wrap_phone', !/^05\d{8}$/.test(phone))) valid = false;
+        if (!markError('wrap_region', !reg)) valid = false;
+        if (!markError('wrap_city', !city)) valid = false;
+        if (!markError('wrap_degree', !degree)) valid = false;
+        if (!markError('wrap_major', major.length < 2)) valid = false;
+        if (!markError('wrap_univ', univ.length < 2)) valid = false;
+        if (!markError('wrap_grad_year', !gradYear)) valid = false;
+        if (!markError('wrap_gpa_scale', !gpaScale)) valid = false;
+        if (!markError('wrap_gpa', isNaN(gpa) || gpa <= 0)) valid = false;
+        if (!markError('wrap_exp', !exp)) valid = false;
+        if (!markError('wrap_emp_status', !status)) valid = false;
+
+        if (status === 'على رأس العمل') {
+            const jTitle = document.getElementById('mewa_job_title').value.trim();
+            const jEmp = document.getElementById('mewa_job_employer').value.trim();
+            if (!markError('wrap_job_title', jTitle.length < 2)) valid = false;
+            if (!markError('wrap_job_employer', jEmp.length < 2)) valid = false;
+        }
+
+        if (!markError('wrap_eng_lvl', !engLvl)) valid = false;
+        if (!markError('wrap_file_cv', !cvFile)) valid = false;
+
+        const agreeMsg = document.getElementById('msg_agree');
+        if (!agree) {
+            agreeMsg.style.display = 'block';
+            valid = false;
+        } else {
+            agreeMsg.style.display = 'none';
+        }
+
+        if (!valid) return;
+
+        const btn = document.getElementById('mewaSubmitBtn');
+        const oldHtml = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جارٍ الحفظ...';
+
+        try {
+            // التحقق من وجود بيئة شيربوينت
+            if (typeof _spPageContextInfo !== 'undefined') {
+                const siteUrl = _spPageContextInfo.webAbsoluteUrl;
+                const listTitle = "CareerInterests";
+
+                // 1. طلب الـ Digest
+                const dResp = await fetch(siteUrl + "/_api/contextinfo", {
+                    method: "POST",
+                    headers: { "Accept": "application/json;odata=verbose" }
+                });
+                const dData = await dResp.json();
+                const digest = dData.d.GetContextWebInformation.FormDigestValue;
+
+                // 2. إنشاء السجل
+                const itemData = {
+                    Title: name,
+                    NationalID: nid,
+                    Nationality: nat,
+                    Email: email,
+                    MobileNumber: phone,
+                    Region: reg,
+                    City: city,
+                    EducationDegree: degree,
+                    Major: major,
+                    University: univ,
+                    GraduationYear: gradYear,
+                    GPA: gpa.toString(),
+                    GPAScale: gpaScale,
+                    ExperienceYears: exp,
+                    EmploymentStatus: status,
+                    CurrentJobTitle: document.getElementById('mewa_job_title').value.trim(),
+                    CurrentEmployer: document.getElementById('mewa_job_employer').value.trim(),
+                    EnglishLevel: engLvl,
+                    ConsentDeclaration: true
+                };
+
+                const itemResp = await fetch(siteUrl + "/_api/web/lists/getbytitle('" + listTitle + "')/items", {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/json;odata=verbose",
+                        "Content-Type": "application/json;odata=verbose",
+                        "X-RequestDigest": digest
+                    },
+                    body: JSON.stringify(itemData)
+                });
+
+                if (!itemResp.ok) throw new Error("تعذر حفظ السجل في شيربوينت");
+                const itemResJson = await itemResp.json();
+                const newId = itemResJson.d.Id;
+
+                // 3. رفع المرفقات
+                const allFiles = [
+                    cvFile,
+                    document.getElementById('mewa_eng_file').files[0],
+                    document.getElementById('mewa_other_file').files[0]
+                ];
+
+                for (const fl of allFiles) {
+                    if (!fl) continue;
+                    const buf = await fl.arrayBuffer();
+                    const upUrl = siteUrl + "/_api/web/lists/getbytitle('" + listTitle + "')/items(" + newId + ")/AttachmentFiles/add(FileName='" + encodeURIComponent(fl.name) + "')";
+                    await fetch(upUrl, {
+                        method: "POST",
+                        headers: {
+                            "Accept": "application/json;odata=verbose",
+                            "X-RequestDigest": digest
+                        },
+                        body: buf
+                    });
+                }
+            } else {
+                // وضع المعاينة والتجربة دون خادم شيربوينت
+                await new Promise(r => setTimeout(r, 1000));
+            }
+
+            document.getElementById('mewaForm').reset();
+            mewaToggleJobFields();
+            document.getElementById('lbl_cv').style.display = 'none';
+            document.getElementById('lbl_eng').style.display = 'none';
+            document.getElementById('lbl_other').style.display = 'none';
+            mewaCloseModal();
+            document.getElementById('mewaSuccessBox').classList.add('show');
+
+        } catch (err) {
+            console.error(err);
+            alert('حدث خطأ أثناء حفظ البيانات في شيربوينت. يرجى التحقق من أذونات القائمة أو الاتصال.');
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = oldHtml;
+        }
+    };
+})();
+</script>

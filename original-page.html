@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الفرص الوظيفية - وزارة البيئة والمياه والزراعة</title>
+    <!-- خط الموقع الرسمي -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --mewa-dark-green: #074726;
+            --mewa-green: #0a6638;
+            --mewa-bright-green: #118c4e;
+            --mewa-footer-bg: #053b1e;
+            --mewa-text-dark: #222222;
+            --mewa-text-gray: #68716b;
+            --border-light: #e6ece8;
+            --card-radius: 14px;
+            --font-family: 'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, Tahoma, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family);
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--mewa-text-dark);
+            direction: rtl;
+            text-align: right;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 1. الشريط الحكومي العلوي */
+        .gov-top-header {
+            background-color: var(--mewa-green);
+            color: #ffffff;
+            font-size: 13px;
+            padding: 7px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gov-right-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .gov-verify-link {
+            color: #d1fae5;
+            text-decoration: none;
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .gov-left-tools {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .gov-tool-item {
+            color: #ffffff;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12.5px;
+            cursor: pointer;
+            opacity: 0.95;
+            transition: opacity 0.2s;
+        }
+
+        .gov-tool-item:hover {
+            opacity: 1;
+        }
+
+        /* 2. شريط التنقل الرئيسي والموقع */
+        .main-navbar {
+            background: #ffffff;
+            padding: 14px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        /* شعار الوزارة */
+        .ministry-brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .mewa-header-logo-img {
+            height: 54px;
+            width: auto;
+            max-width: 250px;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* روابط القائمة */
+        .nav-links-list {
+            display: flex;
+            list-style: none;
+            gap: 22px;
+            align-items: center;
+        }
+
+        .nav-links-list li a {
+            text-decoration: none;
+            color: #333333;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.2s;
+        }
+
+        .nav-links-list li a:hover,
+        .nav-links-list li.active a {
+            color: var(--mewa-green);
+        }
+
+        .nav-chevron {
+            font-size: 10px;
+            color: #88928b;
+        }
+
+        /* الجهة اليسرى في النافبار */
+        .nav-left-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .namaa-logo-wrap {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .namaa-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--mewa-green);
+            font-weight: 700;
+            font-size: 18px;
+            border-right: 1px solid #e0e0e0;
+            padding-right: 14px;
+        }
+
+        .lang-switch-btn, .search-toggle-btn {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: #444444;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+        }
+
+        /* 3. مسار التنقل وعنوان الصفحة */
+        .page-header-strip {
+            padding: 24px 6% 16px;
+            background: #ffffff;
+        }
+
+        .breadcrumbs-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #7b8880;
+            margin-bottom: 20px;
+            list-style: none;
+        }
+
+        .breadcrumbs-bar a {
+            color: #7b8880;
+            text-decoration: none;
+        }
+
+        .breadcrumbs-bar a:hover {
+            color: var(--mewa-green);
+        }
+
+        .breadcrumbs-bar .divider {
+            font-size: 10px;
+            color: #a6b2ab;
+        }
+
+        .breadcrumbs-bar .active-item {
+            color: #38423c;
+            font-weight: 600;
+        }
+
+        .title-and-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-main-title {
+            font-size: 30px;
+            font-weight: 700;
+            color: #1a251e;
+        }
+
+        .page-utility-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .util-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            border: 1px solid #d9e3dc;
+            background: #ffffff;
+            color: #55665c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+
+        .util-btn:hover {
+            background: #f2f7f4;
+            color: var(--mewa-green);
+            border-color: var(--mewa-green);
+        }
+
+        /* 4. حاوية المحتوى الرئيسي */
+        .content-wrapper {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+        }
+
+        /* قسم كن جزءاً من كفاءاتنا */
+        .hero-intro-box {
+            margin-bottom: 40px;
+        }
+
+        .hero-intro-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a251e;
+            margin-bottom: 14px;
+        }
+
+        .hero-intro-desc {
+            font-size: 14.5px;
+            line-height: 1.85;
+            color: #3d4741;
+        }
+
+        .hero-intro-desc a {
+            color: var(--mewa-green);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        /* قسم لماذا تعمل معنا؟ */
+        .section-block {
+            margin-bottom: 44px;
+        }
+
+        .section-heading-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a251e;
+            margin-bottom: 22px;
+        }
+
+        .cards-row-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .feature-box-card {
+            background: #ffffff;
+            border: 1px solid #e1e9e3;
+            border-radius: var(--card-radius);
+            padding: 28px 24px;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-box-card:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .feature-icon-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #f0f7f3;
+            color: var(--mewa-bright-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 18px;
+        }
+
+        .feature-box-card h3 {
+            font-size: 17.5px;
+            font-weight: 700;
+            color: #1a251e;
+            margin-bottom: 10px;
+        }
+
+        .feature-box-card p {
+            font-size: 13.5px;
+            line-height: 1.75;
+            color: #68716b;
+        }
+
+        /* قسم كيف تتقدم؟ (الترتيب الأصلي قبل التعديل) */
+        .step-box-card {
+            background: #ffffff;
+            border: 1px solid #e1e9e3;
+            border-radius: var(--card-radius);
+            padding: 28px 24px;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .step-circle-badge {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--mewa-green);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .step-box-card h3 {
+            font-size: 17.5px;
+            font-weight: 700;
+            color: #1a251e;
+            margin-bottom: 10px;
+        }
+
+        .step-box-card p {
+            font-size: 13.5px;
+            line-height: 1.75;
+            color: #68716b;
+        }
+
+        .step-box-card p a {
+            color: var(--mewa-green);
+            text-decoration: underline;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* تنبيه مهم */
+        .warning-notice-box {
+            background: #fef9ee;
+            border: 1px solid #fde7b0;
+            border-radius: 10px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 26px;
+            font-size: 13.5px;
+            color: #7a4d05;
+        }
+
+        .warning-notice-box strong {
+            color: #b45309;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* شريط التفاعل والتقييم أسفل الصفحة */
+        .page-meta-strip {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #edf2ee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12.5px;
+            color: #7b8880;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .share-and-rating {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .social-share-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .share-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 5px;
+            border: 1px solid #ccd8d0;
+            background: #ffffff;
+            color: #55665c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .stars-rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #10874c;
+        }
+
+        /* شريط الاستبيان */
+        .feedback-vote-bar {
+            background: #f7faf8;
+            border: 1px solid #e1e9e3;
+            border-radius: 10px;
+            padding: 14px 20px;
+            margin-top: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13.5px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .feedback-btns {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn-vote-yes {
+            background: var(--mewa-green);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 7px 22px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-vote-no {
+            background: #ffffff;
+            color: #4a5d52;
+            border: 1px solid #c8d6cd;
+            border-radius: 6px;
+            padding: 7px 22px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* 5. الفوتر الحكومي الشامل كما في الصورة */
+        .mewa-main-footer {
+            background-color: var(--mewa-footer-bg);
+            color: #ffffff;
+            padding: 50px 6% 30px;
+            margin-top: 40px;
+        }
+
+        .footer-columns-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1.3fr;
+            gap: 36px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 15.5px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 18px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--mewa-bright-green);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #c9ded3;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-col ul li a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .social-icons-footer {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .social-pill {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 13px;
+            transition: background 0.2s;
+        }
+
+        .social-pill:hover {
+            background: var(--mewa-green);
+        }
+
+        .accessibility-bar-footer {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .acc-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border-radius: 4px;
+            padding: 4px 10px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .app-badges-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .store-badge-img {
+            height: 32px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            background: rgba(0, 0, 0, 0.25);
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* شريط أسفل الفوتر للحقوق واللوجوهات */
+        .footer-sub-bar {
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            padding-top: 26px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logos-group {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 16px;
+            font-size: 12.5px;
+            list-style: none;
+        }
+
+        .footer-bottom-links a {
+            color: #bcd5c7;
+            text-decoration: none;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #ffffff;
+        }
+
+        .copyright-text {
+            font-size: 12px;
+            color: #9abfa9;
+        }
+
+        /* أزرار عائمة لسهولة الوصول والمساعدة */
+        .floating-side-tools {
+            position: fixed;
+            left: 14px;
+            bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 999;
+        }
+
+        .float-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--mewa-green);
+            color: #ffffff;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .float-btn:hover {
+            transform: scale(1.08);
+        }
+
+        @media (max-width: 900px) {
+            .cards-row-3, .footer-columns-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links-list {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. شريط الحكومة الرقمية العلوي الأخضر -->
+    <div class="gov-top-header">
+        <div class="gov-right-info">
+            <span>موقع حكومي مسجل لدى هيئة الحكومة الرقمية</span>
+            <a href="#" class="gov-verify-link">كيف تتحقق؟ <i class="fa-solid fa-chevron-down"></i></a>
+        </div>
+        <div class="gov-left-tools">
+            <a href="#" class="gov-tool-item"><i class="fa-solid fa-microphone"></i> الأوامر الصوتية</a>
+            <a href="#" class="gov-tool-item"><i class="fa-solid fa-circle-half-stroke"></i> ألوان خاصة</a>
+            <a href="#" class="gov-tool-item"><i class="fa-solid fa-magnifying-glass-plus"></i> تكبير النص</a>
+            <a href="#" class="gov-tool-item"><i class="fa-solid fa-magnifying-glass-minus"></i> تصغير النص</a>
+            <a href="tel:939" class="gov-tool-item" style="font-weight: 600;"><i class="fa-solid fa-phone"></i> الرقم الموحد 939</a>
+        </div>
+    </div>
+
+    <!-- 2. النافبار والشعار الرسمي -->
+    <header class="main-navbar">
+        <a href="#" class="ministry-brand" title="وزارة البيئة والمياه والزراعة">
+            <img src="mewa-logo.png" alt="وزارة البيئة والمياه والزراعة - Ministry of Environment Water & Agriculture" class="mewa-header-logo-img">
+        </a>
+
+        <!-- قائمة الروابط الرئيسية -->
+        <ul class="nav-links-list">
+            <li class="active"><a href="#">الوزارة <i class="fa-solid fa-chevron-down nav-chevron"></i></a></li>
+            <li><a href="#">الخدمات الإلكترونية <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 11px;"></i></a></li>
+            <li><a href="#">المركز الإعلامي <i class="fa-solid fa-chevron-down nav-chevron"></i></a></li>
+            <li><a href="#">بيانات وإحصاءات <i class="fa-solid fa-chevron-down nav-chevron"></i></a></li>
+            <li><a href="#">كيف يمكننا مساعدتك <i class="fa-solid fa-chevron-down nav-chevron"></i></a></li>
+        </ul>
+
+        <!-- اليسار: شعار نما واللغة والبحث -->
+        <div class="nav-left-actions">
+            <a href="#" class="namaa-logo-wrap">
+                <span class="namaa-badge">
+                    <i class="fa-solid fa-leaf"></i> نما
+                </span>
+            </a>
+            <button class="search-toggle-btn" title="بحث"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button class="lang-switch-btn" title="English">ع</button>
+        </div>
+    </header>
+
+    <!-- 3. مسار الصفحة وعنوانها -->
+    <div class="page-header-strip">
+        <ul class="breadcrumbs-bar">
+            <li><a href="#">وزارة البيئة والمياه والزراعة</a></li>
+            <li class="divider">&gt;</li>
+            <li><a href="#">الوزارة</a></li>
+            <li class="divider">&gt;</li>
+            <li><a href="#">عن الوزارة</a></li>
+            <li class="divider">&gt;</li>
+            <li><a href="#">انضم إلينا</a></li>
+            <li class="divider">&gt;</li>
+            <li class="active-item">الفرص الوظيفية</li>
+        </ul>
+
+        <div class="title-and-actions">
+            <h1 class="page-main-title">الفرص الوظيفية</h1>
+            <div class="page-utility-icons">
+                <button class="util-btn" title="اتصال"><i class="fa-solid fa-phone"></i></button>
+                <button class="util-btn" title="بريد"><i class="fa-regular fa-envelope"></i></button>
+                <button class="util-btn" title="طباعة" onclick="window.print()"><i class="fa-solid fa-print"></i></button>
+                <button class="util-btn" title="حجم الخط"><i class="fa-solid fa-font"></i></button>
+                <button class="util-btn" title="مشاركة"><i class="fa-solid fa-share-nodes"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. محتوى الصفحة الرئيسي المطابق تماماً للصورة الأصلية -->
+    <main class="content-wrapper">
+
+        <!-- قسم كن جزءاً من كفاءاتنا -->
+        <section class="hero-intro-box">
+            <h2 class="hero-intro-title">كن جزءاً من كفاءاتنا</h2>
+            <p class="hero-intro-desc">
+                نرحب بانضمامك إلى منظومة وزارة البيئة والمياه والزراعة، والإسهام في استدامة موارد المملكة، وتحقيق مستهدفات رؤية السعودية 2030، والتزاماً منا بالشفافية وتكافؤ الفرص، نعلن عن جميع الفرص الوظيفية المتاحة في الوزارة حصراً عبر <a href="https://jadarat.sa" target="_blank">المنصة الوطنية الموحدة للتوظيف (جدارات)</a> هنا، حيث يمكنك استعراض الوظائف المتاحة والتقديم عليها مباشرة.
+            </p>
+        </section>
+
+        <!-- قسم لماذا تعمل معنا؟ -->
+        <section class="section-block">
+            <h2 class="section-heading-title">لماذا تعمل معنا؟</h2>
+            <div class="cards-row-3">
+                
+                <!-- كرت أثر وطني (اليمين) -->
+                <div class="feature-box-card">
+                    <div class="feature-icon-circle">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3>أثر وطني</h3>
+                    <p>إسهام مباشر في الأمن الغذائي والمائي والاستدامة البيئية والتنمية الزراعية للمملكة.</p>
+                </div>
+
+                <!-- كرت مسارات متنوعة (الوسط) -->
+                <div class="feature-box-card">
+                    <div class="feature-icon-circle">
+                        <i class="fa-solid fa-diagram-project"></i>
+                    </div>
+                    <h3>مسارات متنوعة</h3>
+                    <p>فرص في المجالات البيئية والمائية والزراعية، والتخصصات الإدارية والتقنية والمالية والتشغيلية.</p>
+                </div>
+
+                <!-- كرت تطوير مهني (اليسار) -->
+                <div class="feature-box-card">
+                    <div class="feature-icon-circle">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                    </div>
+                    <h3>تطوير مهني</h3>
+                    <p>بيئة عمل محفزة تتيح لك تنمية مهاراتك وبناء مسار مهني يناسب خبرتك وطموحاتك.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- قسم كيف تتقدّم؟ (الترتيب الأصلي قبل التعديلات: 1 سجل في جدارات، 2 استعرض الفرص، 3 قدم طلبك) -->
+        <section class="section-block">
+            <h2 class="section-heading-title">كيف تتقدّم؟</h2>
+            <div class="cards-row-3">
+                
+                <!-- كرت 1: سجل في جدارات -->
+                <div class="step-box-card">
+                    <div class="step-circle-badge">1</div>
+                    <h3>سجل في جدارات</h3>
+                    <p>أنشئ حسابك أو حدث بياناتك في <a href="https://jadarat.sa" target="_blank">منصة جدارات <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 11px;"></i></a>.</p>
+                </div>
+
+                <!-- كرت 2: استعرض الفرص -->
+                <div class="step-box-card">
+                    <div class="step-circle-badge">2</div>
+                    <h3>استعرض الفرص</h3>
+                    <p>تصفح الوظائف المعلنة باسم وزارة البيئة والمياه والزراعة.</p>
+                </div>
+
+                <!-- كرت 3: قدم طلبك -->
+                <div class="step-box-card">
+                    <div class="step-circle-badge">3</div>
+                    <h3>قدم طلبك</h3>
+                    <p>أكمل بيانات طلبك وقدّم على الوظيفة المناسبة لمؤهلاتك.</p>
+                </div>
+
+            </div>
+
+            <!-- تنبيه مهم -->
+            <div class="warning-notice-box">
+                <strong><i class="fa-solid fa-triangle-exclamation"></i> تنبيه مهم:</strong>
+                <span>تعلن الوزارة عن وظائفها حصراً عبر منصة جدارات، ولا تطلب أي رسوم للتوظيف، يُرجى الحذر من الإعلانات أو الجهات غير الرسمية.</span>
+            </div>
+        </section>
+
+        <!-- معلومات التقييم والمشاركة -->
+        <div class="page-meta-strip">
+            <div>
+                تاريخ آخر تعديل: 10 محرم 1446 12:27 م بتوقيت المملكة العربية السعودية.
+            </div>
+            <div class="share-and-rating">
+                <div class="stars-rating">
+                    <span>آخر تقييم: 29 ربيع الثاني 1446 01:16 ص</span>
+                    <span>مجموع التقييم: 3</span>
+                    <span>عدد المقيمين: 14</span>
+                    <span style="color: #0a6638; margin-right: 6px;">★★★☆☆</span>
+                </div>
+                <div class="social-share-links">
+                    <span>شارك هذه الصفحة:</span>
+                    <a href="#" class="share-btn"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="share-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="share-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="share-btn"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="share-btn"><i class="fa-regular fa-copy"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- هل استفدت من المعلومات؟ -->
+        <div class="feedback-vote-bar">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-circle-info" style="color: #0a6638;"></i>
+                <span>هل استفدت من المعلومات المقدمة في هذه الصفحة؟</span>
+            </div>
+            <div class="feedback-btns">
+                <button class="btn-vote-yes"><i class="fa-regular fa-face-smile"></i> نعم</button>
+                <button class="btn-vote-no"><i class="fa-regular fa-face-frown"></i> لا</button>
+                <span style="font-size: 12px; color: #7a867f; margin-right: 10px;">21 من الزوار أعجبهم محتوى الصفحة من أصل 53 مشاركة</span>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 5. الفوتر الرسمي للوزارة -->
+    <footer class="mewa-main-footer">
+        <div class="footer-columns-grid">
+            
+            <!-- العمود 1: نظرة عامة -->
+            <div class="footer-col">
+                <h4>نظرة عامة</h4>
+                <ul>
+                    <li><a href="#">حول البوابة</a></li>
+                    <li><a href="#">شروط الاستخدام</a></li>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                    <li><a href="#">الأخبار والفعاليات</a></li>
+                    <li><a href="#">اتفاقية مستوى الخدمة</a></li>
+                    <li><a href="#">إمكانية الوصول</a></li>
+                    <li><a href="#">سياسة إخلاء المسؤولية</a></li>
+                </ul>
+            </div>
+
+            <!-- العمود 2: المساعدة والدعم -->
+            <div class="footer-col">
+                <h4>المساعدة والدعم</h4>
+                <ul>
+                    <li><a href="#">إبلاغ عن حالة فساد <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 10px;"></i></a></li>
+                    <li><a href="#">كيف يمكننا مساعدتك</a></li>
+                    <li><a href="#">الأسئلة الشائعة</a></li>
+                    <li><a href="#">تقييم محتوى</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                    <li><a href="#">للاشتراك في النشرات والتحذيرات</a></li>
+                </ul>
+            </div>
+
+            <!-- العمود 3: روابط مهمة -->
+            <div class="footer-col">
+                <h4>روابط مهمة</h4>
+                <ul>
+                    <li><a href="#">المنصة الوطنية الموحدة <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 10px;"></i></a></li>
+                    <li><a href="#">منصة البيانات المفتوحة <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 10px;"></i></a></li>
+                    <li><a href="#">منصة المشاركة المجتمعية <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 10px;"></i></a></li>
+                    <li><a href="#">منصة اعتماد <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 10px;"></i></a></li>
+                    <li><a href="#">جهات منظومة البيئة والمياه والزراعة</a></li>
+                    <li><a href="#">ميثاق العملاء</a></li>
+                    <li><a href="#">وزارة النقل والخدمات اللوجستية <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 10px;"></i></a></li>
+                </ul>
+            </div>
+
+            <!-- العمود 4: تواصل معنا والأدوات -->
+            <div class="footer-col">
+                <h4>تواصل معنا</h4>
+                <div class="social-icons-footer">
+                    <a href="#" class="social-pill"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="social-pill"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-pill"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="social-pill"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-pill"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social-pill"><i class="fa-brands fa-snapchat"></i></a>
+                </div>
+
+                <h4>أدوات الإتاحة والوصول</h4>
+                <div class="accessibility-bar-footer">
+                    <button class="acc-btn">A+</button>
+                    <button class="acc-btn">A</button>
+                    <button class="acc-btn">A-</button>
+                    <button class="acc-btn"><i class="fa-solid fa-volume-high"></i></button>
+                    <button class="acc-btn"><i class="fa-solid fa-eye"></i></button>
+                </div>
+
+                <h4>حمل تطبيق الجوال</h4>
+                <div class="app-badges-group">
+                    <a href="#" class="store-badge-img"><i class="fa-brands fa-apple"></i> App Store</a>
+                    <a href="#" class="store-badge-img"><i class="fa-brands fa-google-play"></i> Google Play</a>
+                    <a href="#" class="store-badge-img"><i class="fa-solid fa-mobile-screen"></i> AppGallery</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- الشريط السفلي للفوتر -->
+        <div class="footer-sub-bar">
+            <div class="footer-logos-group">
+                <span style="font-weight: 700; font-size: 16px;">رؤية 2030</span>
+                <span style="font-weight: 700; font-size: 14px; border-right: 1px solid rgba(255,255,255,0.3); padding-right: 16px;">هيئة الحكومة الرقمية DGA</span>
+                <span style="font-size: 13px; color: #a4c7b3;">وزارة البيئة والمياه والزراعة</span>
+            </div>
+
+            <ul class="footer-bottom-links">
+                <li><a href="#">الرئيسية</a></li>
+                <li><a href="#">المركز الإعلامي</a></li>
+                <li><a href="#">بيانات وإحصاءات</a></li>
+                <li><a href="#">الخدمات الإلكترونية</a></li>
+                <li><a href="#">كيف يمكننا مساعدتك</a></li>
+            </ul>
+
+            <div class="copyright-text">
+                MEWA جميع الحقوق محفوظة 2024 - آخر تحديث: 2024 الموافق 11 جمادى الأولى 1446 09:50 ص
+            </div>
+        </div>
+    </footer>
+
+    <!-- أزرار الخدمات العائمة على اليسار -->
+    <div class="floating-side-tools">
+        <button class="float-btn" title="المساعد الذكي"><i class="fa-solid fa-headset"></i></button>
+        <button class="float-btn" title="تطبيق نما"><i class="fa-solid fa-leaf"></i></button>
+        <button class="float-btn" title="الوضع الليلي"><i class="fa-solid fa-moon"></i></button>
+    </div>
+
+</body>
+</html>
